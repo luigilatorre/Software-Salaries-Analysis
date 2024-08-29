@@ -41,18 +41,3 @@ Source: [Kaggle - Software Professional Salaries 2022](https://www.kaggle.com/da
 ## Visualizations
 The project includes a scatter plot that visualizes the relationship between average salaries and company ratings, highlighting potential anomalies in the data.
 
-## Future Work
-- Deeper analysis of salary trends across different job roles
-- Time-based analysis if temporal data becomes available
-- More advanced statistical analyses and machine learning applications
-
-## How to Use
-1. Clone this repository
-2. Ensure you have the required libraries installed (pandas, matplotlib, seaborn, requests)
-3. Run the Jupyter notebook to see the analysis and results
-
-## Contributing
-Contributions, issues, and feature requests are welcome. Feel free to check [issues page](https://github.com/yourusername/software-salary-analysis/issues) if you want to contribute.
-
-## License
-This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.

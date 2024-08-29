@@ -40,3 +40,6 @@ Source: [Kaggle - Software Professional Salaries 2022](https://www.kaggle.com/da
 
 ## Visualizations
 The project includes a scatter plot showing the relationship between average salary and company rating, with notable data anomalies.
+
+## Calculations
+All calculations and analyses were performed in the file [software-salaries-analysis.py](/python-data-analysis/software-salaries-analysis.py).

@@ -1,10 +1,10 @@
 # Data Analysis: Software Professional Salaries
 
 ## Overview
-This project analyzes a dataset of over 20,000 software professionals, focusing on various aspects such as salaries, job roles, company ratings, and locations. The analysis is performed using Python, with an emphasis on data manipulation, visualization, and API integration.
+This project analyzes a dataset of over 20,000 software professionals. It focuses on salaries, job roles, company ratings, and locations using Python for data manipulation, visualization, and API integration.
 
 ## Dataset
-The dataset, "Software Professionals Salary.csv", contains information about software professionals, including:
+The dataset, "Software Professionals Salary.csv", includes:
 - Company Rating
 - Company Name
 - Job Title
@@ -18,26 +18,25 @@ Source: [Kaggle - Software Professional Salaries 2022](https://www.kaggle.com/da
 
 ## Technologies Used
 - Python
-- Pandas for data manipulation
-- Matplotlib and Seaborn for data visualization
-- Requests library for API integration
+- Pandas (data manipulation)
+- Matplotlib and Seaborn (visualization)
+- Requests (API integration)
 
 ## Key Features
 1. Data loading and initial exploration
-2. Analysis of unique job roles and titles
-3. Company-specific analyses
-4. Currency conversion using ExchangeRate-API
-5. Salary analysis across different job roles and companies
-6. Visualization of salary vs company rating relationship
+2. Analysis of job roles and titles
+3. Company-specific insights
+4. Currency conversion from INR to USD using ExchangeRate-API
+5. Salary analysis across job roles and companies
+6. Visualization of salary vs company rating
 
 ## Main Findings
-- The dataset contains 22,770 entries with 8 columns
-- There are 11 unique job roles in the dataset
-- Amazon has the highest number of salary reports across all job titles
-- A real-time currency conversion from INR to USD was implemented
+- The dataset has 22,770 entries with 8 columns
+- There are 11 unique job roles
+- Amazon has the highest number of salary reports
+- Real-time currency conversion from INR to USD was used
 - Identified the company with the highest average salary in USD
-- Created a scatter plot showing the relationship between average salary and company rating, revealing some interesting outliers
+- Scatter plot reveals the relationship between average salary and company rating, highlighting interesting outliers
 
 ## Visualizations
-The project includes a scatter plot that visualizes the relationship between average salaries and company ratings, highlighting potential anomalies in the data.
-
+The project includes a scatter plot showing the relationship between average salary and company rating, with notable data anomalies.

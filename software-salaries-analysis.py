@@ -14,35 +14,35 @@ print(sps.dtypes)
 # Display the first few rows
 sps.head()
 
-# Question 1: What is the shape (rows, cols) of the `sps` DataFrame?
+# Objective 1: Determine the structure of the `sps` DataFrame in terms of rows and columns.
 print(sps.shape)
 
-# Question 2: How many unique `Job Roles` are there in the dataset?
+# Objective 2: Identify the number of unique roles in the `Job Roles` column and list them.
 print(sps['Job Roles'].nunique())
 print(sps['Job Roles'].unique())
 
-# Question 3: How many unique `Job Title` are there for the "Python" `Job Role`?
+# Objective 3: Calculate the number of unique `Job Titles` associated with the `Python` role.
 python_role = sps[sps['Job Roles'] == 'Python']
 upjt = python_role['Job Title'].nunique()
-print("Numero di ruoli Python in Job Titles:", upjt)
+print("Number of unique Python roles in Job Titles:", upjt)
 
-# Question 4: Of the `Company Name`s that are listed in the DataFrame, how many have a "Python" `Job Role` with a `Job Title` containing the substring "Analyst"?
+# Objective 4: Find out how many companies offer a `Python` role with a `Job Title` containing the word "Analyst".
 par = sps[(sps['Job Roles'] == 'Python') & sps['Job Title'].str.contains('Analyst', case=False)]
 ucpa = par['Company Name'].nunique()
-print('Le aziende che hanno Python come Job Role con un Job Title contenente la parola "Analyst" sono:', ucpa)
+print('Companies with a Python Job Role and a Job Title containing the word "Analyst":', ucpa)
 
-# Question 5: Which `Company Name` has the highest number of `Salaries Reported` (across all `Job Title`s)?
+# Objective 5: Identify the `Company Name` with the highest number of `Salaries Reported` across all `Job Titles`.
 ssc = sps.groupby('Company Name')['Salaries Reported'].sum()
 cms = ssc.idxmax()
 ms = ssc.max()
-print(f"La Company Name con il numero più alto di Salaries Reported è '{cms}' con un totale di {ms} di reports.")
+print(f"The Company with the highest number of Salaries Reported is '{cms}' with a total of {ms} reports.")
 
-# Question 6: Given the `Company Name` you found at the previous question, how many `Location`s is this company present in?
+# Objective 6: Determine how many `Location`s the company identified in the previous step is present in.
 csl = sps[sps['Company Name'] == 'Amazon']
 ulc = csl['Location'].nunique()
-print(f"L'azienda Amazon è presente in {ulc} città")
+print(f"The company Amazon is present in {ulc} locations.")
 
-# Question 7: Create a new column named `Salary USD` containing the salary-equivalent in USD
+# Objective 7: Create a new column `Salary USD` that contains the salary equivalent in USD.
 def get_inr_to_usd_rate():
     url = "https://open.er-api.com/v6/latest/INR"
     r = requests.get(url)
@@ -50,25 +50,25 @@ def get_inr_to_usd_rate():
     if r.status_code == 200:
         return data['rates']['USD']
     else:
-        return "Tasso di conversione assente!"
+        return "Conversion rate unavailable!"
 
 itur = get_inr_to_usd_rate()
-print(f"l'attuale conversione di Rupie(INR) in Dollari(USD) è: {itur}")
+print(f"The current conversion rate from INR to USD is: {itur}")
 
 sps['Salary USD'] = (sps['Salary'].astype(int) * itur).astype(int)
 print(sps[['Salary', 'Salary USD']].head())
 
-# Question 8: What is the average `Salary USD` for the "Python" `Job Role`?
+# Objective 8: Calculate the average `Salary USD` for the `Python` Job Role.
 pjr = sps[sps['Job Roles'] == 'Python']
 avup = pjr['Salary USD'].mean()
 print(f"The average Salary USD for the Python Job Role is: {avup}")
 
-# Question 9: Which `Company Name` has the highest average `Salary USD` across all `Job Title`s?
+# Objective 9: Identify the `Company Name` with the highest average `Salary USD` across all `Job Titles`.
 avg_sal = sps.groupby('Company Name')['Salary USD'].mean()
 hasc = avg_sal.idxmax()
-print(f"L'Azienda con il salario medio più alto è: {hasc}")
+print(f"The Company with the highest average Salary USD is: {hasc}")
 
-# Question 10: Create a Plot that shows the relationship between the average `Salary USD` and the average `Rating` for each `Company Name`
+# Objective 10: Visualize the relationship between the average `Salary USD` and the average `Rating` for each `Company Name`.
 average_salaries = sps.groupby('Company Name')['Salary USD'].mean()
 average_ratings = sps.groupby('Company Name')['Rating'].mean()
 
@@ -80,11 +80,11 @@ plot_sps = pd.DataFrame({
 
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x='Average Salary USD', y='Average Rating', s=50, alpha=0.8, data=plot_sps)
-plt.title('Relazione tra la media del Salario ed il Rating per ogni Azienda')
-plt.xlabel('Salario Medio (USD)')
-plt.ylabel('Rating Medio')
+plt.title('Relationship between Average Salary and Rating for each Company')
+plt.xlabel('Average Salary (USD)')
+plt.ylabel('Average Rating')
 plt.show()
 
-# Considerazioni finali
-print("CONSIDERAZIONI: La 'Thapar University' spicca fuori dagli schemi per salario medio con valori di 1.078.110 ma con rating 3.6")
-print("che da uno stacco di rapporto 1:10 dal secondo 'FFF Enterprises' con 117.394 rating 4.2. Dal secondo in poi le discese sono abbastanza lineari.")
+# Final Considerations
+print("FINAL CONSIDERATIONS: 'Thapar University' stands out with an exceptionally high average salary of 1,078,110 USD but a relatively low rating of 3.6.")
+print("This creates a sharp contrast with the second company, 'FFF Enterprises', which has a salary of 117,394 USD and a rating of 4.2. From the second company onwards, the salary drops are relatively linear.")
